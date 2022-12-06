@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'image_cartoonifier_app',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
