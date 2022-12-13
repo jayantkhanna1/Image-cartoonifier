@@ -124,9 +124,9 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-STATICFILES_DIRS=[os.path.join(BASE_DIR,'image_cartoonify_app/static')]
+STATICFILES_DIRS=[os.path.join(BASE_DIR,'image_cartoonifier_app/static')]
 STATIC_ROOT=os.path.join(BASE_DIR,'static')
 
 #media for databse
-MEDIA_URL='image_cartoonify_app/media/'
+MEDIA_URL='image_cartoonifier_app/media/'
 MEDIA_ROOT=os.path.join(BASE_DIR,'media')
