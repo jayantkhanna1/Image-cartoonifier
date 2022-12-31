@@ -5,3 +5,4 @@ def index(request):
     return render(request,"index.html")
 def cartoonify(request):
     pass
+
