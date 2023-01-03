@@ -129,4 +129,4 @@ STATIC_ROOT=os.path.join(BASE_DIR,'static')
 
 #media for databse
 MEDIA_URL='image_cartoonifier_app/media/'
-MEDIA_ROOT=os.path.join(BASE_DIR,'media')
+MEDIA_ROOT=os.path.join(BASE_DIR,'image_cartoonifier_app/media')
