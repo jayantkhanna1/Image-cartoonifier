@@ -1,7 +1,6 @@
 from django.contrib import admin
-from .models import UserUpload, UserCartoonify
+from .models import UserUpload
 
 admin.site.register(UserUpload)
-admin.site.register(UserCartoonify)
 
 # Register your models here.

@@ -2,18 +2,19 @@ from django.shortcuts import render
 import cv2
 import sys
 import matplotlib.pyplot as plt
-from django.core.files.storage import FileSystemStorage
 from .models import UserUpload
-# Create your views here.
+
+
 def index(request):
-    return render(request,"index.html")
+    return render(request,"index.html",{"name":"None"})
 def cartoonify(request):
     img = request.FILES['image']
     id = UserUpload.objects.create(image=img)
     
-    cartoonify_helper(id.id)
-    
-    return render(request,"index.html",{"images":images})
+    name = cartoonify_helper(id.id)
+    name = "image_cartoonifier_app/media/images/"+str(name)
+    print(name)
+    return render(request,"index.html",{"name":name})
 
 
 def cartoonify_helper(ImagePath):
@@ -73,16 +74,18 @@ def cartoonify_helper(ImagePath):
     fig, axes = plt.subplots(3,2, figsize=(8,8), subplot_kw={'xticks':[], 'yticks':[]}, gridspec_kw=dict(hspace=0.1, wspace=0.1))
     for i, ax in enumerate(axes.flat):
         ax.imshow(images[i], cmap='gray')
+    # plt.show()
+    return save(ReSized6,ImagePath)
     
-    save(ReSized6,ImagePath)
-    return True
     
 def save(ReSized6, ImagePath):
-    import os
+    import os,random,string
     #saving an image using imwrite()
-    newName="cartoonified_Image"
+    newName=''.join(random.choices(string.ascii_lowercase +string.digits, k=15))
     path1 = os.path.dirname(ImagePath)
     extension=os.path.splitext(ImagePath)[1]
     path = os.path.join(path1, newName+extension)
+    
     cv2.imwrite(path, cv2.cvtColor(ReSized6, cv2.COLOR_RGB2BGR))
-    return True
+    name = newName+extension
+    return name
